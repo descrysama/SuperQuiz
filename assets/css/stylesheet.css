@@ -12,6 +12,7 @@ body {
   background-repeat: no-repeat;
   margin: 0;
   padding: 0;
+  height: 100vh;
 }
 
 .header {
@@ -73,4 +74,11 @@ a {
 
 #content {
   text-align: center;
+}
+
+
+@media screen and (max-width:1040px) {
+  body {
+    height: auto;
+  }
 }
