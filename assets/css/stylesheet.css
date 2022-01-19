@@ -9,7 +9,6 @@ body {
   background: linear-gradient(180deg, #FF3939 0%, rgba(244, 16, 114, 0.87) 28.13%, rgba(204, 47, 161, 0.79) 50%, rgba(138, 78, 191, 0.81) 72.92%, rgba(0, 94, 196, 0.67) 100%);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
   margin: 0;
   padding: 0;
 }
