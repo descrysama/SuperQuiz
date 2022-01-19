@@ -16,7 +16,7 @@ let myQuestions = [
   },
   {
       question: "Quel est la population de la Megalopole de Tokyo (Tokyo et sa banlieue) ?",
-      answer: ["53343402 Habitants", "6 186 546 Habitants", "13 962 725 Habitants", "43 203 574 Habitants"],
+      answer: ["53 343 402 Habitants", "6 186 546 Habitants", "13 962 725 Habitants", "43 203 574 Habitants"],
       correctAnswer: "43 203 574 Habitants"
   },
   {
