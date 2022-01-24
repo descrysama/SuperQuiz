@@ -81,3 +81,17 @@ a {
   flex: 0 0 auto;
   width: auto !important;
 }
+
+li {
+  list-style-type: none;
+}
+
+ul {
+  text-align: left;
+  font-size: 20px;
+}
+
+ul span {
+  color: rgb(0, 226, 0);
+  font-style: italic;
+}

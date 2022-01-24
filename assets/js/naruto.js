@@ -51,6 +51,7 @@ let myQuestions = [
   }
 ]
 
+
 let score = 0;
 let counter = 1;
 let i = 0;
