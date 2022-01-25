@@ -95,3 +95,6 @@ ul span {
   color: rgb(0, 226, 0);
   font-style: italic;
 }
+.option {
+  min-width: 150px;
+}

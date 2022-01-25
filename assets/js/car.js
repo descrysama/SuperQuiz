@@ -1,55 +1,57 @@
 let myQuestions = [
   {
-      question: 'qui est minato (Pour Naruto) ?',
-      answer: ['son pere', 'sa mere', 'sa soeur', 'son chien'],
-      correctAnswer: "son pere"
+      question: "Qu'est ce que ABT ?",
+      answer: ['Une marque de voiture', 'Un préparateur Automobile', "Le nom d'une franchise de jeu de Voiture", 'Un type de moteur'],
+      correctAnswer: 'Un préparateur Automobile'
   },
   {
-      question: "qu'est ce que le chakra ?",
-      answer: ["un dragon", "a manger", "de l'energie", "une arme"],
-      correctAnswer: "de l'energie"
+      question: "Comment fonctionne le turbo d'une voiture ?",
+      answer: ["Il aspire l'air", "Il souffle l'air", "Il brule l'air", "Il aspire l'essence"],
+      correctAnswer: "Il aspire l'air"
   },
   {
-      question: "comment meurt Neji ?",
-      answer: ["d'une attaque de Juubi", "De vieillesse", "En combatant Hinata (Fin Shippuden)", "En trébuchant"],
-      correctAnswer: "d'une attaque de Juubi"
+      question: "Combien de générations de GOLF existe t'il (2022) ?",
+      answer: ["6", "7", "8", "9"],
+      correctAnswer: "8"
   },
   {
-      question: "Qu'est-ce qu'un Bijuu ?",
-      answer: ["L'ennemi juré de Sasuke", "Une pierre précieuse", "Un des 9 démons", "Un plat Japonnais"],
-      correctAnswer: "Un des 9 démons"
+      question: "Quel est le nom de la marque de voiture qui place le contact a gauche (trou pour la clé)?",
+      answer: ["Audi", "Lamborghini", "Aston Martin", "Porsche"],
+      correctAnswer: "Porsche"
   },
   {
-      question: "Qui est le Tsuchikage ?",
-      answer: ["Le chef d'Iwagakure", "Le chef de Konoha", "Le chef d'Amegakure", "Le chef d'Otogakure"],
-      correctAnswer: "Le chef d'Iwagakure"
+      question: "Entre ces voiture laquelle est la plus rapide sur un 0-100km/h ?",
+      answer: ["Bugatti Chiron Pur Sport", "Bugatti Veyron", "Tesla model S plaid", "Koenigsegg Regera"],
+      correctAnswer: "Tesla model S plaid"
   },
   {
-      question: "Comment est mort Hanzo la salamandre ?",
-      answer: ["Contre Mifune", "En s'empoisonnant (Avec la Salamandre)", "Contre Nagato (Pain Yahiko)", "De vieillesse"],
-      correctAnswer: "Contre Nagato (Pain Yahiko)"
+    question: "Qui a auparavant racheté Nissan ?",
+    answer: ["Bugatti", "Volkswagen", "Renault", "Ferrari"],
+    correctAnswer: "Renault"
   },
   {
-      question: "Durant la grande guerre le frère de Suigetsu est ressuscité, comment s'appelle t-il ?",
-      answer: ["Zabuza", "Jinpachi", "Mangetsu", "Kushimaru"],
-      correctAnswer: "Mangetsu"
+      question: "En quelle année est sortie l'audi RS6(C7) ?",
+      answer: ["2011", "2012", "2013", "2015"],
+      correctAnswer: "2012"
   },
   {
-      question: "Quel est le nom de la technique de Madara pour faire un double invisible ?",
-      answer: ["Limbo", "Geass", "Amaterasu", "Takemikazuchi"],
-      correctAnswer: "Limbo"
+      question: "Quelle marque compte bientôt faire son entrée en formule 1 ?",
+      answer: ["Nissan", "Bugatti", "Porsche", "Renault"],
+      correctAnswer: "Porsche"
   },
   {
-      question: "Qui a élaboré le projet 'Oeil de lune' (Tsuki no Me Keikaku) ?",
-      answer: ["Momoshiki", "Madara", "Juubi lui même", "Kaguya"],
-      correctAnswer: "Madara"
+      question: "Complétez le nom du circuit auto suivant : Nürbur",
+      answer: ["sring", "cring", "kring", "gring"],
+      correctAnswer: "gring"
   },
   {
-      question: "Quel est le prénom d'un des 9 Bijuus ?",
-      answer: ["Saikô", "Gyûki", "Gobi", "Nibi"],
-      correctAnswer: "Gyûki"
+      question: "Quel est le nom du champion du monde de Formule 1 (2021) ?",
+      answer: ["Fernando Alonso", "Michael Schumacher", "Lewis Hamilton", "Max Verstappen"],
+      correctAnswer: "Max Verstappen"
   }
 ]
+
+correctArray = ["Un préparateur Automobile", "Il aspire l'air", "8", "Porsche", "Tesla model S plaid", "Renault", "2012", "Porsche", "gring" , "Max Verstappen"]
 
 let score = 0;
 let counter = 1;
@@ -57,8 +59,6 @@ let i = 0;
 let j = 0;
 let response;
 let finished = false;
-let incorrectanswer = [];
-let correctanswer = [];
 let buttons = document.getElementById('buttons')
 let finalresult = document.getElementById('finalresult')
 let setquestion = document.querySelector('#question')
@@ -66,6 +66,7 @@ let setoptions = document.querySelectorAll('.option')
 let eventoptions = document.querySelector('option')
 sessionStorage.removeItem('score')
 sessionStorage.removeItem('questions')
+sessionStorage.removeItem('correctanswer')
 
 function SetQuestions() {
   
@@ -86,14 +87,14 @@ SetQuestions()
     if (counter == myQuestions.length) {
       finished = true;
       if (finished == true) {
-        sessionStorage.setItem('questions', myQuestions.length); 
+        console.log(finished);
+        sessionStorage.setItem('questions', myQuestions.length);
+        sessionStorage.setItem('correctanswer', JSON.stringify(correctArray))
         let addButton = document.createElement('a');
         addButton.setAttribute('class', 'btn btn-primary')
         addButton.setAttribute('href', 'result.html')
         addButton.textContent = "Voir Resultats";
         finalresult.appendChild(addButton)
-        sessionStorage.correctanswer = JSON.stringify(correctanswer)
-        sessionStorage.incorrectanswer = JSON.stringify(incorrectanswer)
       }
     }
     }
@@ -106,15 +107,12 @@ buttons.addEventListener('click', function() {
       if (response == myQuestions[i].correctAnswer) {
         score++;
         i++;
-        correctanswer.push(response)
         sessionStorage.setItem('score', score);
         if (i != myQuestions.length) {
           SetQuestions();
         }
       } else {
         i++
-        incorrectanswer.push(response)
-        console.log(incorrectanswer);
         sessionStorage.setItem('score', score);
         if (i != myQuestions.length) {
           SetQuestions();
