@@ -51,6 +51,8 @@ let myQuestions = [
   }
 ]
 
+correctArray = ["son pere", "de l'energie", "d'une attaque de Juubi", "Un des 9 démons", "Le chef d'Iwagakure", "Contre Nagato (Pain Yahiko)", "Mangetsu", "Limbo", "Madara", "Gyûki"]
+
 
 let score = 0;
 let counter = 1;
@@ -65,6 +67,7 @@ let setoptions = document.querySelectorAll('.option')
 let eventoptions = document.querySelector('option')
 sessionStorage.removeItem('score')
 sessionStorage.removeItem('questions')
+sessionStorage.removeItem('correctanswer')
 
 function SetQuestions() {
   
@@ -79,23 +82,24 @@ function SetQuestions() {
   
 SetQuestions()
 
-  for (let k = 0; k < setoptions.length; k++) {
-    setoptions[k].onclick = function(evt) {
-    response = evt.target.value;
-    if (counter == myQuestions.length) {
-      finished = true;
-      if (finished == true) {
-        console.log(finished);
-        sessionStorage.setItem('questions', myQuestions.length); 
-        let addButton = document.createElement('a');
-        addButton.setAttribute('class', 'btn btn-primary')
-        addButton.setAttribute('href', 'result.html')
-        addButton.textContent = "Voir Resultats";
-        finalresult.appendChild(addButton)
-      }
-    }
+for (let k = 0; k < setoptions.length; k++) {
+  setoptions[k].onclick = function(evt) {
+  response = evt.target.value;
+  if (counter == myQuestions.length) {
+    finished = true;
+    if (finished == true) {
+      console.log(finished);
+      sessionStorage.setItem('questions', myQuestions.length);
+      sessionStorage.setItem('correctanswer', JSON.stringify(correctArray))
+      let addButton = document.createElement('a');
+      addButton.setAttribute('class', 'btn btn-primary')
+      addButton.setAttribute('href', 'result.html')
+      addButton.textContent = "Voir Resultats";
+      finalresult.appendChild(addButton)
     }
   }
+  }
+}
   
 
 buttons.addEventListener('click', function() {

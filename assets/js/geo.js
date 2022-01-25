@@ -36,6 +36,9 @@ let myQuestions = [
   }
 ]
 
+correctArray = ["La Floride", "Un pays partageant une seule frontière et étant encerclé par un Pays uniquement", "São Paulo (Brésil)", "43 203 574 Habitants", "Desert de Gobi (Chine)", "Everest", "Océanie"]
+
+
 let score = 0;
 let counter = 1;
 let i = 0;
@@ -49,6 +52,7 @@ let setoptions = document.querySelectorAll('.option')
 let eventoptions = document.querySelector('option')
 sessionStorage.removeItem('score')
 sessionStorage.removeItem('questions')
+sessionStorage.removeItem('correctanswer')
 
 function SetQuestions() {
   
@@ -70,7 +74,8 @@ SetQuestions()
       finished = true;
       if (finished == true) {
         console.log(finished);
-        sessionStorage.setItem('questions', myQuestions.length); 
+        sessionStorage.setItem('questions', myQuestions.length);
+        sessionStorage.setItem('correctanswer', JSON.stringify(correctArray))
         let addButton = document.createElement('a');
         addButton.setAttribute('class', 'btn btn-primary')
         addButton.setAttribute('href', 'result.html')
